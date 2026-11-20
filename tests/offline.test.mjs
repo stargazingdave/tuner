@@ -4,7 +4,11 @@ import vm from 'node:vm';
 import { test } from 'node:test';
 const source = await readFile(new URL('../dist/sw.js', import.meta.url), 'utf8');
 test('offline app shell, JS modules, worklet, and WASM load with Origin header variation under a project prefix', async () => {
-  const scope = 'https://example.test/web-tuner/';
+  const distIndex = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
+  const scriptPath = distIndex.match(/src="([^"]+\.js)"/)[1];
+  // CI builds with the repository's absolute Pages base; local builds use relative assets.
+  const base = scriptPath.startsWith('/') ? scriptPath.slice(0, scriptPath.lastIndexOf('/assets/') + 1) : '/fixture-tuner/';
+  const scope = new URL(base, 'https://example.test').href;
   const listeners = {}, stores = new Map();
   let networkCalls = 0;
   const cacheApi = {
@@ -50,8 +54,6 @@ test('offline app shell, JS modules, worklet, and WASM load with Origin header v
   listeners.activate({ waitUntil: task => activating = task });
   await activating;
   assert.ok(stores.has('another-app-cache'), 'other app cache is preserved');
-  const distIndex = await readFile(new URL('../dist/index.html', import.meta.url), 'utf8');
-  const scriptPath = distIndex.match(/src="([^"]+\.js)"/)[1];
   async function request(path, navigation = false) {
     const req = new Request(new URL(path, scope), { headers: { Origin: 'https://example.test' } });
     // Node Request cannot construct navigate mode, so expose the browser request shape.
