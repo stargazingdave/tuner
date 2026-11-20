@@ -77,4 +77,4 @@ class TunerProcessor extends AudioWorkletProcessor {
     return this.alive;
   }
 }
-registerProcessor('noised-tuner', TunerProcessor);
+registerProcessor('tuner', TunerProcessor);

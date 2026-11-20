@@ -7,10 +7,10 @@ globalThis.sampleRate = 48000;
 globalThis.AudioWorkletProcessor = class {
   constructor() { this.port = { messages: [], postMessage(message) { this.messages.push(message); } }; }
 };
-globalThis.registerProcessor = (name, implementation) => { assert.equal(name, 'noised-tuner'); Processor = implementation; };
+globalThis.registerProcessor = (name, implementation) => { assert.equal(name, 'tuner'); Processor = implementation; };
 const source = await readFile(new URL('../public/audio/tuner.worklet.js', import.meta.url), 'utf8');
 await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'));
-const bytes = await readFile(new URL('../public/wasm/noised_tuner.wasm', import.meta.url));
+const bytes = await readFile(new URL('../public/wasm/tuner.wasm', import.meta.url));
 test('worklet runs the real WASM detector, reports the reference signal, and produces silent output', async () => {
   const processor = new Processor();
   const hz = 82.4069 * 2 ** (-7/1200);

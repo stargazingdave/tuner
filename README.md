@@ -1,4 +1,4 @@
-# NoiseD Tuner
+# Tuner
 
 Static, installable instrument tuner for iPhone, Android, and desktop. Microphone
 PCM stays on the device. No server, account, external font, or analytics.
@@ -9,13 +9,13 @@ GitHub Pages hosts the compiled app; Rust and Node are build-time tools only.
 Keep these sibling checkouts:
 
 ```text
-noised/
-  dsp/      # stargazingdave/noised-dsp
-  web/      # stargazingdave/noised-web
+audio/
+  dsp/      # stargazingdave/audio-dsp
+  web/      # stargazingdave/audio-web
   tuner/    # this repository
 ```
 
-- **UI:** imported as `noised-ui` through `file:../web/ui`. Reusable buttons,
+- **UI:** imported as `audio-ui-kit` through `file:../web/ui`. Reusable buttons,
   selectors, note targets, meters, status indicators, and icons live in
   `../web/ui/src`; their styles and SSR tests live in that library.
 - **DSP:** `wasm/Cargo.toml` imports `dsp-core` through a local path.
@@ -64,10 +64,10 @@ source, not checked in as another implementation.
 2. Push this repository with the default branch named `main`.
 3. Set **Settings → Pages → Source → GitHub Actions**.
 4. The shared DSP repository is private. Add a dedicated **read-only deploy key**
-   to `noised-dsp` and store its private half as the `DSP_DEPLOY_KEY` Actions
+   to `audio-dsp` and store its private half as the `DSP_DEPLOY_KEY` Actions
    secret in `web-tuner`. Keep "Allow write access" disabled. The key grants
    access to that source repository only. Alternatively, set a fine-grained
-   `NOISED_SOURCE_TOKEN` with Contents: Read access to `noised-dsp`.
+   `AUDIO_SOURCE_TOKEN` with Contents: Read access to `audio-dsp`.
    Never commit either credential. The public shared web library needs no key.
 5. The included Pages workflow checks out all three repositories as siblings,
    builds and tests, then publishes only `dist/`.
@@ -89,7 +89,7 @@ Audio stops when the page goes into the background; tap Start when returning.
 This is a foreground tuner, not a background recorder.
 
 Updates activate automatically while the tuner is stopped, without an update panel.
-Only this app's scoped caches are managed; other NoiseD web apps are unaffected.
+Only this app's scoped caches are managed; other Audio web apps are unaffected.
 
 ## Tuning behavior
 
@@ -125,4 +125,4 @@ permission denial/retry, app switching, and a reload in airplane mode.
 
 ## Instrument layout
 
-Mobile uses an edge-to-edge layout with the pitch display above string targets and tuning controls. Desktop uses one console with the display beside the target selector. The shared TunerDisplay and BrandLink components come from noised-ui. The only external link is davidportal.dev, using the logo asset from the Spaceship project.
+Mobile uses an edge-to-edge layout with the pitch display above string targets and tuning controls. Desktop uses one console with the display beside the target selector. The shared TunerDisplay and BrandLink components come from audio-ui-kit. The only external link is davidportal.dev, using the logo asset from the Spaceship project.

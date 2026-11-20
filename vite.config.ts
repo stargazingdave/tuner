@@ -22,7 +22,7 @@ export default defineConfig({
       const version = hash.digest('hex').slice(0, 16);
       const urls = files.map(f => './' + path.relative('dist', f).split(path.sep).join('/'));
       const worker = `const VERSION = '${version}';
-const PREFIX = 'noised-tuner-' + new URL(self.registration.scope).pathname + '-';
+const PREFIX = 'tuner-' + new URL(self.registration.scope).pathname + '-';
 const CACHE = PREFIX + VERSION;
 const FILES = ${JSON.stringify(urls)};
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES.map(file => new Request(file, { cache: 'reload' }))))));

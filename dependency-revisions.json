@@ -1,10 +1,10 @@
 {
   "web": {
-    "repository": "stargazingdave/noised-web",
-    "revision": "796e5c724eb6879a42b7908d2bc5f77fcf3e6b63"
+    "repository": "stargazingdave/audio-web",
+    "revision": "d414d223f7a017ebebe9df918a88268365562ccd"
   },
   "dsp": {
-    "repository": "stargazingdave/noised-dsp",
-    "revision": "2def02df6d76499e1eca503c8ac993eae9eaa676"
+    "repository": "stargazingdave/audio-dsp",
+    "revision": "09876318f06a720c6e65d32abf75a1e68dfef7c0"
   }
 }

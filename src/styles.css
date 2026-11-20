@@ -5,15 +5,15 @@
   background: #0d1011;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
-  --noised-ink: #c6f779;
-  --noised-on-ink: #15200d;
-  --noised-display-bg: #101612;
-  --noised-accent: #c6f779;
-  --noised-accent-soft: #c6f7790d;
-  --noised-surface: #252d29;
-  --noised-border: #364039;
-  --noised-control-bg: #161c19;
-  --noised-focus-color: #c6f779;
+  --audio-ink: #c6f779;
+  --audio-on-ink: #15200d;
+  --audio-display-bg: #101612;
+  --audio-accent: #c6f779;
+  --audio-accent-soft: #c6f7790d;
+  --audio-surface: #252d29;
+  --audio-border: #364039;
+  --audio-control-bg: #161c19;
+  --audio-focus-color: #c6f779;
 }
 * { box-sizing: border-box; }
 html, body, #root { min-height: 100%; }
@@ -42,9 +42,9 @@ button, select { font: inherit; }
   border-bottom: 1px solid #323a34;
 }
 h1 { font-size: 15px; font-weight: 550; letter-spacing: .04em; margin: 0; }
-.console-header .noised-segments { border: none; padding: 4px; background: #101512; border-radius: 8px; }
-.console-header .noised-segments button { min-width: 105px; min-height: 36px; font-size: 12px; opacity: .6; }
-.console-header .noised-segments button[aria-pressed=true] { color: #dcf2ce; background: #2a352a; box-shadow: 0 1px 3px #0005; opacity: 1; }
+.console-header .audio-segments { border: none; padding: 4px; background: #101512; border-radius: 8px; }
+.console-header .audio-segments button { min-width: 105px; min-height: 36px; font-size: 12px; opacity: .6; }
+.console-header .audio-segments button[aria-pressed=true] { color: #dcf2ce; background: #2a352a; box-shadow: 0 1px 3px #0005; opacity: 1; }
 .session-status { justify-self: end; color: #a2afa4; font-size: 11px; }
 .tuning-screen {
   position: relative;
@@ -55,37 +55,37 @@ h1 { font-size: 15px; font-weight: 550; letter-spacing: .04em; margin: 0; }
   background: #101612;
   box-shadow: inset 0 0 34px #0002;
 }
-.tuning-screen .noised-tuner-display { max-width: 590px; margin: auto; width: 100%; }
+.tuning-screen .tuner-display { max-width: 590px; margin: auto; width: 100%; }
 .tuning-controls { min-width: 0; padding: 20px 22px; border-left: 1px solid #323a34; display: flex; flex-direction: column; gap: 18px; }
 .control-heading { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 10px; }
 h2 { font-size: 11px; font-weight: 500; color: #a1afa3; letter-spacing: .01em; margin: 0; }
 .auto-button { min-height: 30px; padding: 4px 9px; font-size: 10px; border-radius: 5px; color: #a6b1a6; }
 .auto-button[aria-pressed=true] { background: #c6f77912; color: #c6f779; }
-.tuning-controls .noised-notes { flex-direction: column; gap: 5px; }
-.tuning-controls .noised-notes button { flex-direction: row; padding: 7px 12px; gap: 16px; border-radius: 6px; min-height: 37px; border-color: #354037; background: #1c241f; }
-.tuning-controls .noised-notes button:hover { background: #293429; }
-.tuning-controls .noised-notes button[aria-pressed=true] { border-color: #9ec761; background: #c6f7790e; }
-.tuning-controls .noised-notes button[data-detected] { background: #c6f7790c; border-color: #6a8053; }
-.tuning-controls .noised-notes__detail { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 10px; opacity: .5; }
-.tuning-controls .noised-notes__name { flex: 1; text-align: left; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 22px; line-height: 1; }
-.tuning-controls .noised-notes__name sub { font-family: inherit; margin-left: 3px; font-size: 11px; opacity: .55; }
-.tuning-controls .noised-notes__mark { width: 4px; height: 4px; border-radius: 50%; margin: 0; background: #52604f; }
-.tuning-controls .noised-notes button[data-detected] .noised-notes__mark { background: #c6f779; box-shadow: 0 0 7px #c6f77940; }
+.tuning-controls .audio-notes { flex-direction: column; gap: 5px; }
+.tuning-controls .audio-notes button { flex-direction: row; padding: 7px 12px; gap: 16px; border-radius: 6px; min-height: 37px; border-color: #354037; background: #1c241f; }
+.tuning-controls .audio-notes button:hover { background: #293429; }
+.tuning-controls .audio-notes button[aria-pressed=true] { border-color: #9ec761; background: #c6f7790e; }
+.tuning-controls .audio-notes button[data-detected] { background: #c6f7790c; border-color: #6a8053; }
+.tuning-controls .audio-notes__detail { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 10px; opacity: .5; }
+.tuning-controls .audio-notes__name { flex: 1; text-align: left; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 22px; line-height: 1; }
+.tuning-controls .audio-notes__name sub { font-family: inherit; margin-left: 3px; font-size: 11px; opacity: .55; }
+.tuning-controls .audio-notes__mark { width: 4px; height: 4px; border-radius: 50%; margin: 0; background: #52604f; }
+.tuning-controls .audio-notes button[data-detected] .audio-notes__mark { background: #c6f779; box-shadow: 0 0 7px #c6f77940; }
 .tuning-settings { display: grid; gap: 12px; margin-top: auto; }
-.tuning-settings .noised-field { gap: 7px; }
-.tuning-settings .noised-field label { color: #a1afa3; font-size: 10px; opacity: 1; }
-.tuning-settings .noised-field select { min-height: 38px; font-size: 11px; background: #141b16; border-color: #354037; padding-left: 10px; }
+.tuning-settings .audio-field { gap: 7px; }
+.tuning-settings .audio-field label { color: #a1afa3; font-size: 10px; opacity: 1; }
+.tuning-settings .audio-field select { min-height: 38px; font-size: 11px; background: #141b16; border-color: #354037; padding-left: 10px; }
 .console-transport { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 20px; padding: 16px 30px; border-top: 1px solid #323a34; background: #1b221e; }
 .input-meter { display: flex; flex-direction: column; gap: 9px; }
 .input-meter > span { font-size: 9px; letter-spacing: .05em; color: #96a393; }
-.input-meter .noised-level { gap: 3px; }
-.input-meter .noised-level > span { height: 9px; background: #354032; }
-.input-meter .noised-level > span[data-lit] { background: #a9d06c; }
+.input-meter .audio-level { gap: 3px; }
+.input-meter .audio-level > span { height: 9px; background: #354032; }
+.input-meter .audio-level > span[data-lit] { background: #a9d06c; }
 .transport-actions { display: flex; align-items: center; gap: 14px; }
 .start-button { min-height: 48px; min-width: 164px; border-radius: 8px; font-size: 13px; font-weight: 600; }
 .reference-button { min-height: 44px; font-size: 11px; padding: 8px 10px; color: #a6b2a4; }
 .reference-button[aria-pressed=true] { color: #c6f779; }
-.creator-link { justify-self: end; --noised-logo-filter: invert(1); color: #acb8aa; opacity: .8; }
+.creator-link { justify-self: end; --audio-logo-filter: invert(1); color: #acb8aa; opacity: .8; }
 .creator-link:hover { opacity: 1; }
 .error-message { position: relative; color: #f1c991; font-size: 12px; line-height: 1.6; padding: 10px 14px; background: #70522125; border: 1px solid #80623d; border-radius: 6px; max-width: 460px; margin: 14px auto 0; }
 @media (min-width: 1500px) { .tuner-console { grid-template-rows: 82px minmax(510px, 1fr) 108px; } }
@@ -104,25 +104,25 @@ h2 { font-size: 11px; font-weight: 500; color: #a1afa3; letter-spacing: .01em; m
   .console-header { padding: 14px 22px; gap: 12px; grid-template-columns: 1fr auto; border-bottom: none; }
   .console-header h1 { font-size: 17px; letter-spacing: -.02em; }
   .console-header .session-status { font-size: 10px; }
-  .console-header .noised-segments { grid-row: 2; grid-column: 1 / -1; justify-self: stretch; margin-top: 10px; padding: 4px; background: #1c251e; }
-  .console-header .noised-segments button { min-width: 0; flex: 1; min-height: 35px; font-size: 12px; }
-  .console-header .noised-segments button[aria-pressed=true] { background: #35412e; box-shadow: 0 1px 5px #0003; }
+  .console-header .audio-segments { grid-row: 2; grid-column: 1 / -1; justify-self: stretch; margin-top: 10px; padding: 4px; background: #1c251e; }
+  .console-header .audio-segments button { min-width: 0; flex: 1; min-height: 35px; font-size: 12px; }
+  .console-header .audio-segments button[aria-pressed=true] { background: #35412e; box-shadow: 0 1px 5px #0003; }
   .tuning-screen { padding: 0 12px 16px; box-shadow: none; }
-  .tuning-screen .noised-tuner-display { max-width: 440px; }
+  .tuning-screen .tuner-display { max-width: 440px; }
   .tuning-controls { border: none; padding: 0 22px 18px; gap: 18px; }
   .control-heading { margin-bottom: 12px; }
-  .tuning-controls .noised-notes { flex-direction: row; gap: 7px; }
-  .tuning-controls .noised-notes button { flex-direction: column; gap: 10px; padding: 11px 4px 10px; min-height: 83px; border-radius: 8px; background: #19221b; }
-  .tuning-controls .noised-notes__name { text-align: center; font-size: 26px; }
-  .tuning-controls .noised-notes__name sub { font-size: 11px; margin-left: 1px; }
-  .tuning-controls .noised-notes__detail { font-size: 9px; }
-  .tuning-controls .noised-notes__mark { height: 3px; width: 12px; border-radius: 2px; }
+  .tuning-controls .audio-notes { flex-direction: row; gap: 7px; }
+  .tuning-controls .audio-notes button { flex-direction: column; gap: 10px; padding: 11px 4px 10px; min-height: 83px; border-radius: 8px; background: #19221b; }
+  .tuning-controls .audio-notes__name { text-align: center; font-size: 26px; }
+  .tuning-controls .audio-notes__name sub { font-size: 11px; margin-left: 1px; }
+  .tuning-controls .audio-notes__detail { font-size: 9px; }
+  .tuning-controls .audio-notes__mark { height: 3px; width: 12px; border-radius: 2px; }
   .tuning-settings { grid-template-columns: 1.35fr 1fr; gap: 14px; margin-top: 0; }
-  .tuning-settings .noised-field select { min-height: 43px; background: #19221b; font-size: 11px; }
+  .tuning-settings .audio-field select { min-height: 43px; background: #19221b; font-size: 11px; }
   .console-transport { grid-column: auto; grid-template-columns: 1fr auto; padding: 17px 22px max(12px, env(safe-area-inset-bottom)); gap: 4px 12px; background: #18201a; border-color: #2d392d; }
   .input-meter { grid-column: 1; grid-row: 1; gap: 7px; }
-  .input-meter .noised-level { gap: 2px; }
-  .input-meter .noised-level > span { width: 3px; }
+  .input-meter .audio-level { gap: 2px; }
+  .input-meter .audio-level > span { width: 3px; }
   .transport-actions { display: contents; }
   .start-button { grid-column: 2; grid-row: 1 / span 2; align-self: center; min-width: 168px; min-height: 47px; }
   .reference-button { grid-column: 1; grid-row: 2; justify-self: start; min-height: 32px; padding: 4px 0; font-size: 10px; }
@@ -133,42 +133,42 @@ h2 { font-size: 11px; font-weight: 500; color: #a1afa3; letter-spacing: .01em; m
   .console-header { padding-left: 18px; padding-right: 18px; }
   .tuning-controls { padding-left: 18px; padding-right: 18px; }
   .console-transport { padding-left: 18px; padding-right: 18px; }
-  .tuning-controls .noised-notes { gap: 5px; }
+  .tuning-controls .audio-notes { gap: 5px; }
   .tuning-settings { gap: 10px; }
 }
 @media (max-width: 760px) and (max-height: 740px) {
   .console-header { padding-top: 10px; padding-bottom: 8px; }
-  .console-header .noised-segments { margin-top: 3px; }
+  .console-header .audio-segments { margin-top: 3px; }
   .tuning-screen { padding-bottom: 8px; }
-  .tuning-screen .noised-tuner-display { max-width: 330px; }
+  .tuning-screen .tuner-display { max-width: 330px; }
   .tuning-controls { padding-bottom: 12px; gap: 12px; }
   .control-heading { margin-bottom: 7px; }
-  .tuning-controls .noised-notes button { min-height: 70px; padding-top: 8px; padding-bottom: 8px; gap: 7px; }
+  .tuning-controls .audio-notes button { min-height: 70px; padding-top: 8px; padding-bottom: 8px; gap: 7px; }
   .console-transport { padding-top: 10px; gap: 4px 12px; }
 }
 
-.tuning-screen .noised-pitch-meter .noised-pitch-meter__direction { opacity: .6; }
+.tuning-screen .audio-pitch-meter .audio-pitch-meter__direction { opacity: .6; }
 @media (max-width: 760px) {
-  .tuning-settings .noised-field select { font-size: 16px; }
+  .tuning-settings .audio-field select { font-size: 16px; }
   .start-button { font-size: 14px; }
 }
 @media (max-width: 760px) and (max-height: 700px) {
   .tuner-console { grid-template-rows: auto minmax(190px, 1fr) auto auto; }
   .console-header { padding-top: 8px; padding-bottom: 4px; }
-  .console-header .noised-segments { margin-top: 0; }
-  .console-header .noised-segments button { min-height: 31px; }
-  .tuning-screen .noised-tuner-display { max-width: 280px; }
-  .noised-tuner-display__readout { top: 38%; }
-  .noised-tuner-display__note { font-size: 76px; }
-  .noised-tuner-display__frequency { margin-top: 7px; }
-  .noised-tuner-display__deviation { margin-top: 22px; }
-  .noised-tuner-display__status { margin-top: 6px; }
+  .console-header .audio-segments { margin-top: 0; }
+  .console-header .audio-segments button { min-height: 31px; }
+  .tuning-screen .tuner-display { max-width: 280px; }
+  .tuner-display__readout { top: 38%; }
+  .tuner-display__note { font-size: 76px; }
+  .tuner-display__frequency { margin-top: 7px; }
+  .tuner-display__deviation { margin-top: 22px; }
+  .tuner-display__status { margin-top: 6px; }
   .tuning-controls { padding-bottom: 10px; gap: 10px; }
   .control-heading { margin-bottom: 5px; }
-  .tuning-controls .noised-notes button { min-height: 64px; gap: 5px; padding-top: 7px; padding-bottom: 7px; }
-  .tuning-controls .noised-notes__name { font-size: 23px; }
-  .tuning-settings .noised-field { gap: 5px; }
-  .tuning-settings .noised-field select { min-height: 39px; }
+  .tuning-controls .audio-notes button { min-height: 64px; gap: 5px; padding-top: 7px; padding-bottom: 7px; }
+  .tuning-controls .audio-notes__name { font-size: 23px; }
+  .tuning-settings .audio-field { gap: 5px; }
+  .tuning-settings .audio-field select { min-height: 39px; }
   .console-transport { padding-top: 8px; padding-bottom: max(8px, env(safe-area-inset-bottom)); gap: 2px 12px; }
   .creator-link { min-height: 28px; }
 }
@@ -176,9 +176,9 @@ h2 { font-size: 11px; font-weight: 500; color: #a1afa3; letter-spacing: .01em; m
   #root { padding: 12px 24px; }
   .tuner-console { grid-template-rows: 56px minmax(375px, 1fr) 76px; }
   .tuning-screen { padding: 12px 20px; }
-  .tuning-screen .noised-tuner-display { max-width: 500px; }
+  .tuning-screen .tuner-display { max-width: 500px; }
   .tuning-controls { padding: 16px 18px; gap: 18px; }
-  .tuning-controls .noised-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
-  .tuning-controls .noised-notes button { padding-left: 9px; padding-right: 9px; gap: 9px; }
+  .tuning-controls .audio-notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .tuning-controls .audio-notes button { padding-left: 9px; padding-right: 9px; gap: 9px; }
   .console-transport { padding: 12px 24px; }
 }

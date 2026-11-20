@@ -36,14 +36,14 @@ export class AudioSession {
         this.stream = stream;
       }
       const [response] = await Promise.all([
-        fetch(new URL('wasm/noised_tuner.wasm', appBase)),
+        fetch(new URL('wasm/tuner.wasm', appBase)),
         context.audioWorklet.addModule(new URL('audio/tuner.worklet.js', appBase).href),
         resumed,
       ]);
       if (!response.ok) throw new Error('The audio engine could not be downloaded. Reconnect and reload the app.');
       const bytes = await response.arrayBuffer();
       if (generation !== this.generation) return null;
-      const node = new AudioWorkletNode(context, 'noised-tuner', {
+      const node = new AudioWorkletNode(context, 'tuner', {
         numberOfInputs: 1, numberOfOutputs: 1, outputChannelCount: [1],
         channelCount: 1, channelCountMode: 'explicit',
       });

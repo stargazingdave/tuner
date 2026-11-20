@@ -61,7 +61,7 @@ test('offline app shell, JS modules, worklet, and WASM load with Origin header v
     return await response;
   }
   assert.equal(await (await request('./', true)).text(), distIndex);
-  for (const asset of [scriptPath, './audio/tuner.worklet.js', './wasm/noised_tuner.wasm']) {
+  for (const asset of [scriptPath, './audio/tuner.worklet.js', './wasm/tuner.wasm']) {
     const response = await request(asset);
     assert.equal(response.status, 200);
     assert.ok((await response.arrayBuffer()).byteLength > 100);

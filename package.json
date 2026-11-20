@@ -1,5 +1,5 @@
 {
-  "name": "noised-tuner",
+  "name": "tuner",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -13,7 +13,7 @@
     "pin:dependencies": "node scripts/pin-dependencies.mjs"
   },
   "dependencies": {
-    "noised-ui": "file:../web/ui",
+    "audio-ui-kit": "file:../web/ui",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
@@ -27,10 +27,10 @@
   "engines": {
     "node": ">=22.12.0"
   },
-  "description": "An installable, offline instrument tuner powered by NoiseD Rust DSP.",
+  "description": "An installable, offline instrument tuner powered by Audio Rust DSP.",
   "repository": {
-    "url": "git+https://github.com/stargazingdave/web-tuner.git",
+    "url": "git+https://github.com/stargazingdave/tuner.git",
     "type": "git"
   },
-  "homepage": "https://stargazingdave.github.io/web-tuner/"
+  "homepage": "https://stargazingdave.github.io/tuner/"
 }

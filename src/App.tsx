@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AudioIcon, BrandLink, Button, LevelMeter, NoteSelector, SegmentedControl, SelectField, StatusIndicator, TunerDisplay } from 'noised-ui';
+import { AudioIcon, BrandLink, Button, LevelMeter, NoteSelector, SegmentedControl, SelectField, StatusIndicator, TunerDisplay } from 'audio-ui-kit';
 import { midiToHz, noteName, targetFor, tunings, type TuningId } from './music';
 import { useTuner } from './use-tuner';
 import { useAppUpdates } from './use-install';
@@ -8,7 +8,7 @@ const modes = [{ value: 'strings', label: 'Strings' }, { value: 'chromatic', lab
 const appBase = new URL(import.meta.env.BASE_URL, document.baseURI);
 function storedSettings(): { tuning: TuningId; reference: number } {
   try {
-    const saved = JSON.parse(localStorage.getItem('noised-tuner-settings-v1') || '{}');
+    const saved = JSON.parse(localStorage.getItem('tuner-settings-v1') || '{}');
     return { tuning: tunings.some(t => t.id === saved.tuning) ? saved.tuning : 'standard',
       reference: Number.isFinite(saved.reference) && saved.reference >= 430 && saved.reference <= 450 ? saved.reference : 440 };
   } catch { return { tuning: 'standard', reference: 440 }; }
@@ -33,7 +33,7 @@ export function App() {
   function changeSettings(patch: Partial<typeof settings>) {
     const next = { ...settings, ...patch };
     setSettings(next); setSelected(null);
-    try { localStorage.setItem('noised-tuner-settings-v1', JSON.stringify(next)); } catch { /* Optional storage. */ }
+    try { localStorage.setItem('tuner-settings-v1', JSON.stringify(next)); } catch { /* Optional storage. */ }
     if (running && tuner.mode === 'demo') {
       const nextTuning = tunings.find(t => t.id === next.tuning)!;
       tuner.setDemoFrequency(midiToHz(nextTuning.midi[0], next.reference) * 2 ** (-7 / 1200));

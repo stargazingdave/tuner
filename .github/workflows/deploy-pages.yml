@@ -1,4 +1,4 @@
-name: Deploy NoiseD Tuner
+name: Deploy Tuner
 
 on:
   push:
@@ -37,16 +37,16 @@ jobs:
           repository: ${{ steps.sources.outputs.web_repository }}
           ref: ${{ steps.sources.outputs.web_revision }}
           path: web
-          token: ${{ secrets.NOISED_SOURCE_TOKEN || github.token }}
+          token: ${{ secrets.AUDIO_SOURCE_TOKEN || secrets.NOISED_SOURCE_TOKEN || github.token }}
           persist-credentials: false
 
       - name: Check private DSP authentication
         env:
           DSP_DEPLOY_KEY: ${{ secrets.DSP_DEPLOY_KEY }}
-          NOISED_SOURCE_TOKEN: ${{ secrets.NOISED_SOURCE_TOKEN }}
+          AUDIO_SOURCE_TOKEN: ${{ secrets.AUDIO_SOURCE_TOKEN || secrets.NOISED_SOURCE_TOKEN }}
         run: |
-          if [[ -z "$DSP_DEPLOY_KEY" && -z "$NOISED_SOURCE_TOKEN" ]]; then
-            echo "::error::Private noised-dsp access is missing. Add a read-only DSP_DEPLOY_KEY deploy key or a source-read NOISED_SOURCE_TOKEN Actions secret. See README.md."
+          if [[ -z "$DSP_DEPLOY_KEY" && -z "$AUDIO_SOURCE_TOKEN" ]]; then
+            echo "::error::Private audio-dsp access is missing. Add a read-only DSP_DEPLOY_KEY deploy key or a source-read AUDIO_SOURCE_TOKEN Actions secret. See README.md."
             exit 1
           fi
 
@@ -57,7 +57,7 @@ jobs:
           ref: ${{ steps.sources.outputs.dsp_revision }}
           path: dsp
           ssh-key: ${{ secrets.DSP_DEPLOY_KEY }}
-          token: ${{ secrets.NOISED_SOURCE_TOKEN || github.token }}
+          token: ${{ secrets.AUDIO_SOURCE_TOKEN || secrets.NOISED_SOURCE_TOKEN || github.token }}
           persist-credentials: false
 
       - name: Set up Node

@@ -1,9 +1,9 @@
 [package]
-name = "noised-tuner-wasm"
+name = "tuner-wasm"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-description = "Small browser ABI for the shared NoiseD instrument tuner"
+description = "Small browser ABI for the shared Audio instrument tuner"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

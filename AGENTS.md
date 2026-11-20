@@ -1,7 +1,7 @@
-# NoiseD Tuner
+# Tuner
 
 - Keep reusable React components, icons, and component styles in the sibling
-  `../web/ui` library and import them through `noised-ui`.
+  `../web/ui` library and import them through `audio-ui-kit`.
 - Keep reusable audio analysis in the sibling `../dsp` library. Import Rust
   crates by path; do not copy their implementations into this repository.
 - This app owns tuner-specific composition, microphone lifecycle, PWA behavior,

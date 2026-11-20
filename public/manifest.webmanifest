@@ -1,6 +1,6 @@
 {
   "id": "./",
-  "name": "NoiseD Tuner",
+  "name": "Tuner",
   "short_name": "Tuner",
   "description": "A precise, private instrument tuner.",
   "start_url": "./",
